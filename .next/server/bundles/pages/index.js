@@ -295,13 +295,14 @@ function (_Component) {
         selectedStationName: null,
         selectedStationPrice: null,
         selectedStationDiesel: null,
-        selectedStationNinetyFive: null
+        selectedStationNinetyFive: null,
+        selectedStationLon: null
       }
     }), Object.defineProperty(_assertThisInitialized(_this), "showDetails", {
       configurable: true,
       enumerable: true,
       writable: true,
-      value: function value(e, newStationId, newStationName, newStationPrice, newStationDiesel, newStationNinetyFive) {
+      value: function value(e, newStationId, newStationName, newStationPrice, newStationDiesel, newStationNinetyFive, newStationLon) {
         e.preventDefault();
 
         _this.setState(_objectSpread({}, _this.state, {
@@ -309,10 +310,11 @@ function (_Component) {
           selectedStationName: newStationName,
           selectedStationPrice: newStationPrice,
           selectedStationDiesel: newStationDiesel,
-          selectedStationNinetyFive: newStationNinetyFive
+          selectedStationNinetyFive: newStationNinetyFive,
+          selectedStationLon: newStationLon
         }));
 
-        console.log(_this.state.selectedStationId);
+        console.log(_this.state.selectedStationNinetyFive);
       }
     }), _temp));
   }
@@ -330,17 +332,17 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log(this.props.product);
       var stations = this.props.product.stations;
+      console.log(stations);
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 61
+          lineNumber: 64
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("form", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 62
+          lineNumber: 65
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("input", {
         value: this.state.city,
@@ -349,89 +351,74 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 63
+          lineNumber: 66
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("button", {
         type: "submit",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 69
         }
       }, "Search")), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
-        }
-      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 69
-        }
-      }, "name: ", stations[0].station), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 70
-        }
-      }, "fuel: ", stations[0].diesel)), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 73
+          lineNumber: 71
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("h2", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 74
+          lineNumber: 72
         }
       }, "List of the Petrol Stations in Finland"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("ul", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75
+          lineNumber: 73
         }
       }, stations.map(function (item, i) {
         return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("li", {
           key: item.id,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 77
+            lineNumber: 75
           }
         }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("a", {
           onClick: function onClick(e) {
-            return _this2.showDetails(e, item.id, item.station, item.diesel, item.ninetyFive);
+            return _this2.showDetails(e, item.id, item.station, item.diesel, item.ninetyFive, item.lon);
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 78
+            lineNumber: 76
           }
         }, item.station));
       }))), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 85
+          lineNumber: 83
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("h3", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 86
+          lineNumber: 84
         }
       }, "Details: ", this.state.selectedStationId), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 87
+          lineNumber: 85
         }
       }, "petrol Station: ", this.state.selectedStationName), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88
+          lineNumber: 86
         }
       }, "price for diesel: ", this.state.selectedStationDiesel), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 87
         }
-      }, "price for gasoline: ", this.state.selectedStationNinetyFive)), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("style", {
+      }, "price for gasoline: ", this.state.selectedStationLon)), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("style", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91
+          lineNumber: 89
         }
       }, "\n                        div {\n                            padding: 20px;\n                        }\n                        input {\n                            width: 180px;\n                        }\n                        input, button {\n                            height: 30px;\n                            margin-right: 10px;\n                        }\n                    "));
     }

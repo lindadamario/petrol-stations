@@ -14,6 +14,7 @@ export default class extends Component {
         selectedStationPrice: null,
         selectedStationDiesel: null,
         selectedStationNinetyFive: null,
+        selectedStationLon: null
     }
 
 
@@ -38,7 +39,8 @@ export default class extends Component {
         newStationName, 
         newStationPrice, 
         newStationDiesel, 
-        newStationNinetyFive
+        newStationNinetyFive,
+        newStationLon
     ) => {
         e.preventDefault()
         this.setState({
@@ -47,15 +49,16 @@ export default class extends Component {
             selectedStationName: newStationName,
             selectedStationPrice: newStationPrice,
             selectedStationDiesel: newStationDiesel,
-            selectedStationNinetyFive: newStationNinetyFive
-            
+            selectedStationNinetyFive: newStationNinetyFive,
+            selectedStationLon: newStationLon
         })
-        console.log(this.state.selectedStationId)
+        console.log(this.state.selectedStationNinetyFive)
     }
 
     render() {
-        console.log(this.props.product)
+        
         const stations = this.props.product.stations;
+        console.log(stations)
         
         return (
             <div>
@@ -66,16 +69,11 @@ export default class extends Component {
                     <button type='submit'>Search</button>
                 </form>
                 <div>
-                    <p>name: {stations[0].station}</p>
-                    <p>fuel: {stations[0].diesel}</p>
-                    
-                </div>
-                <div>
                     <h2>List of the Petrol Stations in Finland</h2>
                     <ul>
                         {stations.map((item, i) =>
                             <li key={item.id}>
-                                <a onClick={e => this.showDetails(e, item.id, item.station, item.diesel, item.ninetyFive)}>
+                                <a onClick={e => this.showDetails(e, item.id, item.station, item.diesel, item.ninetyFive, item.lon)}>
                                     {item.station}
                                 </a>
                             </li>
@@ -86,7 +84,7 @@ export default class extends Component {
                     <h3>Details: {this.state.selectedStationId}</h3>
                     <p>petrol Station: {this.state.selectedStationName}</p>
                     <p>price for diesel: {this.state.selectedStationDiesel}</p>
-                    <p>price for gasoline: {this.state.selectedStationNinetyFive}</p>
+                    <p>price for gasoline: {this.state.selectedStationLon}</p>
                 </div>
                 <style>
                     {`
